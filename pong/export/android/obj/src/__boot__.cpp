@@ -161,6 +161,7 @@
 #include <StringBuf.h>
 #include <Reflect.h>
 #include <Platform.h>
+#include <Obstacle.h>
 #include <IMap.h>
 #include <Player.h>
 #include <GameState.h>
@@ -359,6 +360,7 @@ hx::RegisterResources( hx::GetResources() );
 ::StringBuf_obj::__register();
 ::Reflect_obj::__register();
 ::Platform_obj::__register();
+::Obstacle_obj::__register();
 ::IMap_obj::__register();
 ::Player_obj::__register();
 ::GameState_obj::__register();
@@ -424,6 +426,7 @@ hx::RegisterResources( hx::GetResources() );
 ::GameState_obj::__boot();
 ::Player_obj::__boot();
 ::IMap_obj::__boot();
+::Obstacle_obj::__boot();
 ::Platform_obj::__boot();
 ::Reflect_obj::__boot();
 ::StringBuf_obj::__boot();

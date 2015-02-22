@@ -17,7 +17,7 @@ class ApplicationMain {
 	#if (openfl >= "2.1")
 	public static var config:lime.app.Config = {
 		antialiasing: Std.int(0),
-		background: Std.int(10079487),
+		background: Std.int(5374034),
 		borderless: false,
 		depthBuffer: false,
 		fps: Std.int(60),

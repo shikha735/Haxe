@@ -1139,6 +1139,17 @@
    <depend name="include/openfl/_v2/events/EventDispatcher.h"/>
    <depend name="include/openfl/_v2/events/IEventDispatcher.h"/>
   </file>
+  <file name="src/Obstacle.cpp">
+   <depend name="include/Obstacle.h"/>
+   <depend name="include/openfl/_v2/display/DisplayObject.h"/>
+   <depend name="include/openfl/_v2/display/DisplayObjectContainer.h"/>
+   <depend name="include/openfl/_v2/display/Graphics.h"/>
+   <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
+   <depend name="include/openfl/_v2/display/InteractiveObject.h"/>
+   <depend name="include/openfl/_v2/display/Sprite.h"/>
+   <depend name="include/openfl/_v2/events/EventDispatcher.h"/>
+   <depend name="include/openfl/_v2/events/IEventDispatcher.h"/>
+  </file>
   <file name="src/IMap.cpp">
    <depend name="include/IMap.h"/>
   </file>
@@ -1246,6 +1257,7 @@
    <depend name="include/Block.h"/>
    <depend name="include/GameState.h"/>
    <depend name="include/Main.h"/>
+   <depend name="include/Obstacle.h"/>
    <depend name="include/Platform.h"/>
    <depend name="include/Player.h"/>
    <depend name="include/openfl/_v2/Lib.h"/>

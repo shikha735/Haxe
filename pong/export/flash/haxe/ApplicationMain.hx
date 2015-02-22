@@ -27,20 +27,12 @@ class ApplicationMain {
 		var types = [];
 		
 		
-		urls.push ("assets/data/data-goes-here.txt");
-		types.push (AssetType.TEXT);
+		urls.push ("star.png/images-go-here.txt");
+		types.push (AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/images-go-here.txt");
-		types.push (AssetType.TEXT);
-		
-		
-		urls.push ("assets/music/music-goes-here.txt");
-		types.push (AssetType.TEXT);
-		
-		
-		urls.push ("assets/sounds/sounds-go-here.txt");
-		types.push (AssetType.TEXT);
+		urls.push ("star.png/star.png");
+		types.push (AssetType.IMAGE);
 		
 		
 		urls.push ("assets/sounds/beep.mp3");
@@ -98,7 +90,7 @@ class ApplicationMain {
 		config = {
 			
 			antialiasing: Std.int (0),
-			background: Std.int (10079487),
+			background: Std.int (5374034),
 			borderless: false,
 			depthBuffer: false,
 			fps: Std.int (60),
@@ -115,7 +107,7 @@ class ApplicationMain {
 		
 		#if js
 		#if (munit || utest)
-		flash.Lib.embed (null, 500, 500, "99CCFF");
+		flash.Lib.embed (null, 500, 500, "520052");
 		#end
 		#else
 		create ();

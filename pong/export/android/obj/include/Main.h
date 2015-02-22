@@ -10,6 +10,7 @@ HX_DECLARE_CLASS0(Ball)
 HX_DECLARE_CLASS0(Block)
 HX_DECLARE_CLASS0(GameState)
 HX_DECLARE_CLASS0(Main)
+HX_DECLARE_CLASS0(Obstacle)
 HX_DECLARE_CLASS0(Platform)
 HX_DECLARE_CLASS0(Player)
 HX_DECLARE_CLASS3(openfl,_v2,display,DisplayObject)
@@ -51,6 +52,8 @@ class HXCPP_CLASS_ATTRIBUTES  Main_obj : public ::openfl::_v2::display::Sprite_o
 		::Platform platform1;
 		::Platform platform2;
 		::Block block1;
+		::Obstacle obs1;
+		::Obstacle obs2;
 		::Ball ball;
 		int scorePlayer;
 		int scoreAI;
@@ -60,8 +63,10 @@ class HXCPP_CLASS_ATTRIBUTES  Main_obj : public ::openfl::_v2::display::Sprite_o
 		bool arrowKeyUp;
 		bool arrowKeyDown;
 		int platformSpeed;
+		int blockSpeed;
 		::openfl::_v2::geom::Point ballMovement;
 		int ballSpeed;
+		::openfl::_v2::geom::Point blockMovement;
 		virtual Void resize( Dynamic e);
 		Dynamic resize_dyn();
 

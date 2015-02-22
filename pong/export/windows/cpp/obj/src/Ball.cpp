@@ -36,7 +36,7 @@ HX_STACK_THIS(this)
 	HX_STACK_LINE(9)
 	super::__construct();
 	HX_STACK_LINE(10)
-	this->get_graphics()->beginFill((int)16777215,null());
+	this->get_graphics()->beginFill((int)10066278,null());
 	HX_STACK_LINE(11)
 	this->get_graphics()->drawCircle((int)0,(int)0,(int)10);
 	HX_STACK_LINE(12)
