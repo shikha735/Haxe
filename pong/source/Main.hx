@@ -217,28 +217,20 @@ class Main extends Sprite
 			ball.y += ballMovement.y;
 			ball.x += ballMovement.x;
 			
-			
-			// obs bounce
-			/*
-			if ( ballMovement.y < 0 && ball.y <= 430 && ball.x >= obs1.x && ball.x <= obs1.x + 25) {
-				bounceBall();
-				Log.trace("BAllx ::" + ball.x + "ball movement.y::" +ballMovement.y + "ball.y" + ball.y);
-			} 
-			 
-			if (ballMovement.y > 0 && ball.y >= 400 && ball.x >= obs1.x && ball.x <= obs1.x + 25 ) {
-				bounceBall();
-				Log.trace("BAllx ::" + ball.x + "ball movement.y::" +ballMovement.y + "ball.y" + ball.y);
-			}
-			 
-			if (ballMovement.x < 0 && ball.y >= 400 && ball.y <= 430 && ball.x == obs1.x +25) {
-				 bounceBall();
-			}
-			 
-			if (ballMovement.x > 0 && ball.y >= 400 && ball.y <= 430 && ball.x == obs1.x) {
-				bounceBall();
-			}*/
+			// obs1 bounce
+				if (ball.x >= obs1.x && ball.x <= obs1.x +30 && ball.y >= obs1.y && ball.y <= obs1.y +30) 
+				{
+					bounceBall();
+					
+				}
+			// obs2 bounce	
+				if (ball.x >= obs2.x && ball.x <= obs2.x +30 && ball.y >= obs2.y && ball.y <= obs2.y +30) 
+				{
+					bounceBall();
+					
+				}
 				
-				//haxe.Log.trace("Direction:: " + direction + "  X Postion:: " + block1.x);
+			//haxe.Log.trace("Direction:: " + direction + "  X Postion:: " + block1.x);
 				
 				if (direction == 1 && block1.x <= 455)
 				{

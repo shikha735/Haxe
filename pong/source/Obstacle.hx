@@ -8,7 +8,7 @@ class Obstacle extends Sprite
 	{
 		super();
 		this.graphics.beginFill(0xffffff);
-		this.graphics.drawRect(0, 0, 25,30);
+		this.graphics.drawRect(0, 0, 30,30);
 		this.graphics.endFill();
 	}
 	
