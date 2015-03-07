@@ -230,6 +230,13 @@ class Main extends Sprite
 					
 				}
 				
+			// Block bounce
+				if (ball.x >= block1.x && ball.x <= block1.x + 50 && ball.y >= block1.y && ball.y <= block1.y +20) {
+					bounceBall();
+				}
+				
+				
+			
 			//haxe.Log.trace("Direction:: " + direction + "  X Postion:: " + block1.x);
 				
 				if (direction == 1 && block1.x <= 455)
