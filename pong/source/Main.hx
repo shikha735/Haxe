@@ -12,6 +12,15 @@ import openfl.text.TextFormatAlign;
 import openfl.display.Bitmap;
 import openfl.Assets;
 import flash.display.BitmapData;
+
+@:bitmap("star.png") 
+class MyBitmapData extends BitmapData { }
+
+enum Paddle {
+	paddle1;
+	paddle2;
+}
+
 enum GameState {
 	Paused;
 	Playing;
@@ -45,11 +54,15 @@ class Main extends Sprite
 	private var obs1:Obstacle;
 	private var obs2:Obstacle;
 	private var ball:Ball;
+	private var star1:Bitmap;
+	private var star2:Bitmap;
 	private var scorePlayer:Int;
 	private var scoreAI:Int;
 	private var scoreField:TextField;
 	private var messageField:TextField;
 	private var currentGameState:GameState;
+	private var pd:Paddle;
+	
 	private var arrowKeyUp:Bool;
 	private var arrowKeyDown:Bool;
 	private var platformSpeed:Int;
@@ -57,9 +70,7 @@ class Main extends Sprite
 	private var ballMovement:Point;
 	private var ballSpeed:Int;
 	private var blockMovement:Point;
-	// private var star1:Star;
 	private var direction:Int = 1;
-
 	/* ENTRY POINT */
 	
 	function resize(e) 
@@ -103,16 +114,10 @@ class Main extends Sprite
 		ball.y = mid;
 		this.addChild(ball);
 		
-		var bd:BitmapData = Assets.getBitmapData("images:String.png");
-		var b:Bitmap = new Bitmap(bd);
-	
-		addChild(b);
-		
-	
-		/*star1 = new Star();
-		star1.x = 100;
-		star1.y = 100;
-		this.addChild(star1);*/
+		star1 = new Bitmap(new MyBitmapData(0, 0));
+		star1.x = Math.random() *300;
+		star1.y = Math.random()*300;
+		this.addChild(star1);
 		
 		var scoreFormat:TextFormat = new TextFormat("Verdana", 24, 0xbbbbbb, true);
 		scoreFormat.align = TextFormatAlign.CENTER;
@@ -192,7 +197,7 @@ class Main extends Sprite
 	
 	private function everyFrame(event:Event):Void {
 		if (currentGameState == Playing) {
-						
+			
 			// player platform movement
 			if (arrowKeyUp) {
 				platform1.x -= platformSpeed;
@@ -267,13 +272,32 @@ class Main extends Sprite
 			// ball platform bounce
 			if (ballMovement.y < 0 && ball.y < (diameter+pwidth+cor) && ball.x >= platform1.x && ball.x <= platform1.x + pdl) {
 				bounceBall();
-				ball.y = diameter+pwidth+cor;
+				ball.y = diameter + pwidth + cor;
+				pd = paddle1;
+				
 			}
 			if (ballMovement.y > 0 && ball.y > (wdt-(diameter+pwidth+cor)) && ball.x >= platform2.x && ball.x <= platform2.x + pdl) {
 				bounceBall();
-				ball.y = (wdt-(diameter+pwidth+cor));
+				ball.y = (wdt - (diameter + pwidth + cor));
+				pd = paddle2;
 			}
 			
+			// star
+			
+			if (ball.x>=star1.x && ball.x<=star1.x+50&&ball.y>=star1.y&&ball.y<=star1.y+37) {
+				star1.x = Math.random() * 300;
+				star1.y = Math.random() * 300;
+				if (pd == paddle1) {
+					scorePlayer++;
+					updateScore();
+				} else {
+					scoreAI++;
+					updateScore();
+				}
+				
+			}
+			
+			// ball star 
 			/*//ball block bounce
 			if (ballMovement.y < 0 && (ball.y >= block1.x&& ball.y < block1.x + 50))
 			bounceBall();
@@ -330,6 +354,8 @@ class Main extends Sprite
 	public static function main() 
 	{
 		// static entry point
+		/*var img = new Bitmap( new MyBitmapData(0, 0) );
+		Lib.current.addChild(img);*/
 		Lib.current.stage.align = flash.display.StageAlign.TOP_LEFT;
 		Lib.current.stage.scaleMode = flash.display.StageScaleMode.NO_SCALE;
 		Lib.current.addChild(new Main());
