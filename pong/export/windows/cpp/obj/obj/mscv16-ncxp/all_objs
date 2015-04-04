@@ -128,7 +128,6 @@ obj/mscv16-ncxp/aa4c65b2_DirectRenderer.obj
 obj/mscv16-ncxp/aa4c65b2_CapsStyle.obj
 obj/mscv16-ncxp/aa4c65b2_BlendMode.obj
 obj/mscv16-ncxp/aa4c65b2_OptimizedPerlin.obj
-obj/mscv16-ncxp/aa4c65b2_BitmapData.obj
 obj/mscv16-ncxp/aa4c65b2_Bitmap.obj
 obj/mscv16-ncxp/82ea9a66_Memory.obj
 obj/mscv16-ncxp/82ea9a66_AssetType.obj
@@ -162,9 +161,13 @@ obj/mscv16-ncxp/57588eaa_StringTools.obj
 obj/mscv16-ncxp/57588eaa_StringBuf.obj
 obj/mscv16-ncxp/57588eaa_Reflect.obj
 obj/mscv16-ncxp/57588eaa_Platform.obj
+obj/mscv16-ncxp/57588eaa_Obstacle.obj
 obj/mscv16-ncxp/57588eaa_IMap.obj
 obj/mscv16-ncxp/57588eaa_Player.obj
 obj/mscv16-ncxp/57588eaa_GameState.obj
+obj/mscv16-ncxp/57588eaa_Paddle.obj
+obj/mscv16-ncxp/57588eaa_MyBitmapData.obj
+obj/mscv16-ncxp/aa4c65b2_BitmapData.obj
 obj/mscv16-ncxp/57588eaa_List.obj
 obj/mscv16-ncxp/57588eaa_Lambda.obj
 obj/mscv16-ncxp/57588eaa_DefaultAssetLibrary.obj

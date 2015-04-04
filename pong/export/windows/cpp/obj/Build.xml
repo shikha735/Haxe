@@ -930,28 +930,6 @@
    <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
    <depend name="include/openfl/_v2/display/OptimizedPerlin.h"/>
   </file>
-  <file name="src/openfl/_v2/display/BitmapData.cpp">
-   <depend name="include/Std.h"/>
-   <depend name="include/haxe/Log.h"/>
-   <depend name="include/haxe/io/Bytes.h"/>
-   <depend name="include/openfl/_v2/Lib.h"/>
-   <depend name="include/openfl/_v2/Memory.h"/>
-   <depend name="include/openfl/_v2/display/BitmapData.h"/>
-   <depend name="include/openfl/_v2/display/BlendMode.h"/>
-   <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
-   <depend name="include/openfl/_v2/display/OptimizedPerlin.h"/>
-   <depend name="include/openfl/_v2/filters/BitmapFilter.h"/>
-   <depend name="include/openfl/_v2/geom/ColorTransform.h"/>
-   <depend name="include/openfl/_v2/geom/Matrix.h"/>
-   <depend name="include/openfl/_v2/geom/Point.h"/>
-   <depend name="include/openfl/_v2/geom/Rectangle.h"/>
-   <depend name="include/openfl/_v2/utils/ByteArray.h"/>
-   <depend name="include/openfl/_v2/utils/IDataInput.h"/>
-   <depend name="include/openfl/_v2/utils/IDataOutput.h"/>
-   <depend name="include/openfl/_v2/utils/IMemoryRange.h"/>
-   <depend name="include/openfl/display/JPEGEncoderOptions.h"/>
-   <depend name="include/openfl/display/PNGEncoderOptions.h"/>
-  </file>
   <file name="src/openfl/_v2/display/Bitmap.cpp">
    <depend name="include/Type.h"/>
    <depend name="include/openfl/_v2/Lib.h"/>
@@ -1173,6 +1151,42 @@
   <file name="src/GameState.cpp">
    <depend name="include/GameState.h"/>
   </file>
+  <file name="src/Paddle.cpp">
+   <depend name="include/Paddle.h"/>
+  </file>
+  <file name="src/MyBitmapData.cpp">
+   <depend name="include/MyBitmapData.h"/>
+   <depend name="include/haxe/Resource.h"/>
+   <depend name="include/haxe/io/Bytes.h"/>
+   <depend name="include/openfl/_v2/display/BitmapData.h"/>
+   <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
+   <depend name="include/openfl/_v2/utils/ByteArray.h"/>
+   <depend name="include/openfl/_v2/utils/IDataInput.h"/>
+   <depend name="include/openfl/_v2/utils/IDataOutput.h"/>
+   <depend name="include/openfl/_v2/utils/IMemoryRange.h"/>
+  </file>
+  <file name="src/openfl/_v2/display/BitmapData.cpp">
+   <depend name="include/Std.h"/>
+   <depend name="include/haxe/Log.h"/>
+   <depend name="include/haxe/io/Bytes.h"/>
+   <depend name="include/openfl/_v2/Lib.h"/>
+   <depend name="include/openfl/_v2/Memory.h"/>
+   <depend name="include/openfl/_v2/display/BitmapData.h"/>
+   <depend name="include/openfl/_v2/display/BlendMode.h"/>
+   <depend name="include/openfl/_v2/display/IBitmapDrawable.h"/>
+   <depend name="include/openfl/_v2/display/OptimizedPerlin.h"/>
+   <depend name="include/openfl/_v2/filters/BitmapFilter.h"/>
+   <depend name="include/openfl/_v2/geom/ColorTransform.h"/>
+   <depend name="include/openfl/_v2/geom/Matrix.h"/>
+   <depend name="include/openfl/_v2/geom/Point.h"/>
+   <depend name="include/openfl/_v2/geom/Rectangle.h"/>
+   <depend name="include/openfl/_v2/utils/ByteArray.h"/>
+   <depend name="include/openfl/_v2/utils/IDataInput.h"/>
+   <depend name="include/openfl/_v2/utils/IDataOutput.h"/>
+   <depend name="include/openfl/_v2/utils/IMemoryRange.h"/>
+   <depend name="include/openfl/display/JPEGEncoderOptions.h"/>
+   <depend name="include/openfl/display/PNGEncoderOptions.h"/>
+  </file>
   <file name="src/List.cpp">
    <depend name="include/List.h"/>
   </file>
@@ -1274,11 +1288,11 @@
    <depend name="include/Block.h"/>
    <depend name="include/GameState.h"/>
    <depend name="include/Main.h"/>
+   <depend name="include/MyBitmapData.h"/>
    <depend name="include/Obstacle.h"/>
+   <depend name="include/Paddle.h"/>
    <depend name="include/Platform.h"/>
    <depend name="include/Player.h"/>
-   <depend name="include/haxe/Log.h"/>
-   <depend name="include/openfl/_v2/Assets.h"/>
    <depend name="include/openfl/_v2/Lib.h"/>
    <depend name="include/openfl/_v2/display/Bitmap.h"/>
    <depend name="include/openfl/_v2/display/BitmapData.h"/>

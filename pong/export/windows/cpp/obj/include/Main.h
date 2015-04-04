@@ -11,8 +11,10 @@ HX_DECLARE_CLASS0(Block)
 HX_DECLARE_CLASS0(GameState)
 HX_DECLARE_CLASS0(Main)
 HX_DECLARE_CLASS0(Obstacle)
+HX_DECLARE_CLASS0(Paddle)
 HX_DECLARE_CLASS0(Platform)
 HX_DECLARE_CLASS0(Player)
+HX_DECLARE_CLASS3(openfl,_v2,display,Bitmap)
 HX_DECLARE_CLASS3(openfl,_v2,display,DisplayObject)
 HX_DECLARE_CLASS3(openfl,_v2,display,DisplayObjectContainer)
 HX_DECLARE_CLASS3(openfl,_v2,display,IBitmapDrawable)
@@ -56,11 +58,14 @@ class HXCPP_CLASS_ATTRIBUTES  Main_obj : public ::openfl::_v2::display::Sprite_o
 		::Obstacle obs1;
 		::Obstacle obs2;
 		::Ball ball;
+		::openfl::_v2::display::Bitmap star1;
+		::openfl::_v2::display::Bitmap star2;
 		int scorePlayer;
 		int scoreAI;
 		::openfl::_v2::text::TextField scoreField;
 		::openfl::_v2::text::TextField messageField;
 		::GameState currentGameState;
+		::Paddle pd;
 		bool arrowKeyUp;
 		bool arrowKeyDown;
 		int platformSpeed;

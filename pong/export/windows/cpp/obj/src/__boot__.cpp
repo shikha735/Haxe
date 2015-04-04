@@ -130,7 +130,6 @@
 #include <openfl/_v2/display/CapsStyle.h>
 #include <openfl/_v2/display/BlendMode.h>
 #include <openfl/_v2/display/OptimizedPerlin.h>
-#include <openfl/_v2/display/BitmapData.h>
 #include <openfl/_v2/display/Bitmap.h>
 #include <openfl/_v2/Memory.h>
 #include <openfl/_v2/AssetType.h>
@@ -168,6 +167,9 @@
 #include <IMap.h>
 #include <Player.h>
 #include <GameState.h>
+#include <Paddle.h>
+#include <MyBitmapData.h>
+#include <openfl/_v2/display/BitmapData.h>
 #include <List.h>
 #include <Lambda.h>
 #include <DefaultAssetLibrary.h>
@@ -332,7 +334,6 @@ hx::RegisterResources( hx::GetResources() );
 ::openfl::_v2::display::CapsStyle_obj::__register();
 ::openfl::_v2::display::BlendMode_obj::__register();
 ::openfl::_v2::display::OptimizedPerlin_obj::__register();
-::openfl::_v2::display::BitmapData_obj::__register();
 ::openfl::_v2::display::Bitmap_obj::__register();
 ::openfl::_v2::Memory_obj::__register();
 ::openfl::_v2::AssetType_obj::__register();
@@ -370,6 +371,9 @@ hx::RegisterResources( hx::GetResources() );
 ::IMap_obj::__register();
 ::Player_obj::__register();
 ::GameState_obj::__register();
+::Paddle_obj::__register();
+::MyBitmapData_obj::__register();
+::openfl::_v2::display::BitmapData_obj::__register();
 ::List_obj::__register();
 ::Lambda_obj::__register();
 ::DefaultAssetLibrary_obj::__register();
@@ -429,6 +433,9 @@ hx::RegisterResources( hx::GetResources() );
 ::DefaultAssetLibrary_obj::__boot();
 ::Lambda_obj::__boot();
 ::List_obj::__boot();
+::openfl::_v2::display::BitmapData_obj::__boot();
+::MyBitmapData_obj::__boot();
+::Paddle_obj::__boot();
 ::GameState_obj::__boot();
 ::Player_obj::__boot();
 ::IMap_obj::__boot();
@@ -462,7 +469,6 @@ hx::RegisterResources( hx::GetResources() );
 ::openfl::_v2::AssetType_obj::__boot();
 ::openfl::_v2::Memory_obj::__boot();
 ::openfl::_v2::display::Bitmap_obj::__boot();
-::openfl::_v2::display::BitmapData_obj::__boot();
 ::openfl::_v2::display::OptimizedPerlin_obj::__boot();
 ::openfl::_v2::display::BlendMode_obj::__boot();
 ::openfl::_v2::display::CapsStyle_obj::__boot();

@@ -48,8 +48,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		path.set ("star.png/images-go-here.txt", "star.png/images-go-here.txt");
 		type.set ("star.png/images-go-here.txt", AssetType.IMAGE);
-		path.set ("star.png/star.png", "star.png/star.png");
-		type.set ("star.png/star.png", AssetType.IMAGE);
 		path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
 		type.set ("assets/sounds/beep.ogg", AssetType.SOUND);
 		path.set ("assets/sounds/flixel.ogg", "assets/sounds/flixel.ogg");
@@ -60,9 +58,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		var id;
 		id = "star.png/images-go-here.txt";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "star.png/star.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/sounds/beep.ogg";
@@ -81,11 +76,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
-		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -711,9 +704,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-
 #elseif html5
-
 
 
 

@@ -1,17 +1,24 @@
 package ;
 
+import flash.display.BitmapData;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.Lib;
-import haxe.Log;
+import openfl.display.Bitmap;
 import openfl.events.KeyboardEvent;
 import openfl.geom.Point;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
-import openfl.display.Bitmap;
-import openfl.Assets;
-import flash.display.BitmapData;
+import flixel.tweens.motion.Motion;
+import flixel.FlxG;
+import flixel.FlxCamera;
+import motion.Actuate;
+import away3d.utils.Cast;
+import away3d.textures.BitmapTexture;
+import away3d.containers.View3D;
+// import away3d.primitives.CubeGeometry;
+
 
 @:bitmap("star.png") 
 class MyBitmapData extends BitmapData { }
@@ -44,9 +51,12 @@ class Main extends Sprite
 	static inline private var diameter:Int = 10;
 	static inline private var bkl:Int = 50;
 	static inline private var bkh:Int = 20;
+	static inline private var strwd:Int = 50;
+	static inline private var strht:Int = 37;
 		
 	var inited:Bool;
 	
+	private var starList = new Array<Bitmap>();
 	private var i:Float;
 	private var platform1:Platform;
 	private var platform2:Platform;
@@ -54,15 +64,15 @@ class Main extends Sprite
 	private var obs1:Obstacle;
 	private var obs2:Obstacle;
 	private var ball:Ball;
-	private var star1:Bitmap;
-	private var star2:Bitmap;
+	private var MyStar:Bitmap;
+	
 	private var scorePlayer:Int;
 	private var scoreAI:Int;
 	private var scoreField:TextField;
 	private var messageField:TextField;
 	private var currentGameState:GameState;
 	private var pd:Paddle;
-	
+	private var MySprite:Sprite;
 	private var arrowKeyUp:Bool;
 	private var arrowKeyDown:Bool;
 	private var platformSpeed:Int;
@@ -113,12 +123,16 @@ class Main extends Sprite
 		ball.x = mid;
 		ball.y = mid;
 		this.addChild(ball);
-		
-		star1 = new Bitmap(new MyBitmapData(0, 0));
-		star1.x = Math.random() *300;
-		star1.y = Math.random()*300;
-		this.addChild(star1);
-		
+		var i = 0;
+		for (i in 0...5) {
+			//a.push(i);
+			starList.insert(i, new Bitmap(new MyBitmapData(0, 0)));
+			//a[i] = new Bitmap(new MyBitmapData(0, 0));
+			starList[i].x = Math.random() *300;
+			starList[i].y = Math.random()*300;
+			this.addChild(starList[i]);
+		}
+			
 		var scoreFormat:TextFormat = new TextFormat("Verdana", 24, 0xbbbbbb, true);
 		scoreFormat.align = TextFormatAlign.CENTER;
 		
@@ -195,6 +209,19 @@ class Main extends Sprite
 		}
 	}
 	
+	private function starAppear(MyStar:Bitmap):Void {
+		MyStar.x = Math.random() * 500;
+		MyStar.y = Math.random() * 500;
+	}
+	
+	
+	private function reAppearStar(star:Bitmap):Void
+	{
+		star.x = Math.random() * 300;
+		star.y = Math.random() * 400;
+		Actuate.tween (star, 1, { alpha: 1 } ); // fade out
+	}
+	
 	private function everyFrame(event:Event):Void {
 		if (currentGameState == Playing) {
 			
@@ -240,7 +267,10 @@ class Main extends Sprite
 					bounceBall();
 				}
 				
-				
+			// star overlap
+			//for (i in 0...5) {
+				//if(starList[i] == block1.x || starList[i] == block1.
+			//}
 			
 			//haxe.Log.trace("Direction:: " + direction + "  X Postion:: " + block1.x);
 				
@@ -282,28 +312,29 @@ class Main extends Sprite
 				pd = paddle2;
 			}
 			
-			// star
+			// star1
+			var paramArray = new Array();
 			
-			if (ball.x>=star1.x && ball.x<=star1.x+50&&ball.y>=star1.y&&ball.y<=star1.y+37) {
-				star1.x = Math.random() * 300;
-				star1.y = Math.random() * 300;
-				if (pd == paddle1) {
-					scorePlayer++;
-					updateScore();
-				} else {
-					scoreAI++;
-					updateScore();
+			
+			i = 0;
+			
+			for (i in 0...5)
+			{
+				if (ball.x >= starList[i].x && ball.x <= starList[i].x + strwd && ball.y >= starList[i].y && ball.y <= starList[i].y + strht) {	
+					var starTween = Actuate.tween (starList[i], 1, { alpha: 0 } ); // fade out
+					paramArray[i] = starTween;
+					starTween.onComplete(function() { reAppearStar(starList[i]); } );
+					if (pd == paddle1) {
+						scorePlayer++;
+						updateScore();
+					} else {
+						scoreAI++;
+						updateScore();
+					}
+					
 				}
-				
-			}
+			}			
 			
-			// ball star 
-			/*//ball block bounce
-			if (ballMovement.y < 0 && (ball.y >= block1.x&& ball.y < block1.x + 50))
-			bounceBall();
-			if (ballMovement.y > 0 && (ball.x >= block1.x&& ball.x < block1.x + 50))
-			bounceBall();
-			*/
 			// ball edge bounce
 			if (ball.x < cor || ball.x > (wdt-cor)) ballMovement.x *= -1;
 			// ball goal
@@ -311,7 +342,20 @@ class Main extends Sprite
 			if (ball.y > wdt-cor) winGame(Human);
 		}
 	}
-	  
+	
+	private function construct ():Void {
+ 
+		var creationDelay:Float;
+ 
+		for (i in 0...60) {
+ 
+			creationDelay = Math.random () * 10;
+			Actuate.timer (creationDelay).onComplete (MyStar);
+ 
+		}
+ 
+	}
+ 
 	private function bounceBall():Void {
 		var direction:Int = (ballMovement.y > 0)?( -1):(1);
 		var randomAngle:Float = (Math.random() * Math.PI / 2) - 45;

@@ -38,7 +38,7 @@ HX_STACK_THIS(this)
 	HX_STACK_LINE(10)
 	this->get_graphics()->beginFill((int)16777215,null());
 	HX_STACK_LINE(11)
-	this->get_graphics()->drawRect((int)0,(int)0,(int)25,(int)30);
+	this->get_graphics()->drawRect((int)0,(int)0,(int)30,(int)30);
 	HX_STACK_LINE(12)
 	this->get_graphics()->endFill();
 }
