@@ -1,5 +1,9 @@
-import lime.Assets;
 #if !macro
+
+
+@:access(lime.app.Application)
+@:access(lime.Assets)
+@:access(openfl.display.Stage)
 
 
 class ApplicationMain {
@@ -8,48 +12,69 @@ class ApplicationMain {
 	public static var config:lime.app.Config;
 	public static var preloader:openfl.display.Preloader;
 	
-	private static var app:lime.app.Application;
-	
 	
 	public static function create ():Void {
 		
-		app = new openfl.display.Application ();
+		var app = new openfl.display.Application ();
 		app.create (config);
 		
 		var display = new flixel.system.FlxPreloader ();
 		
 		preloader = new openfl.display.Preloader (display);
-		preloader.onComplete = init;
+		app.setPreloader (preloader);
+		preloader.onComplete.add (init);
 		preloader.create (config);
 		
-		#if js
+		#if (js && html5)
 		var urls = [];
 		var types = [];
 		
 		
 		urls.push ("star.png/images-go-here.txt");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("star.png/star.png");
-		types.push (AssetType.IMAGE);
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/sounds/beep.mp3");
-		types.push (AssetType.MUSIC);
+		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
 		urls.push ("assets/sounds/flixel.mp3");
-		types.push (AssetType.MUSIC);
+		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
+		urls.push ("Nokia Cellphone FC Small");
+		types.push (lime.Assets.AssetType.FONT);
+		
+		
+		urls.push ("Arial");
+		types.push (lime.Assets.AssetType.FONT);
+		
+		
+		
+		if (config.assetsPrefix != null) {
+			
+			for (i in 0...urls.length) {
+				
+				if (types[i] != lime.Assets.AssetType.FONT) {
+					
+					urls[i] = config.assetsPrefix + urls[i];
+					
+				}
+				
+			}
+			
+		}
 		
 		preloader.load (urls, types);
 		#end
 		
 		var result = app.exec ();
 		
-		#if sys
+		#if (sys && !nodejs && !emscripten)
 		Sys.exit (result);
 		#end
 		
@@ -76,7 +101,7 @@ class ApplicationMain {
 		
 		
 		
-		if (loaded == total) {
+		if (total == 0) {
 			
 			start ();
 			
@@ -89,25 +114,49 @@ class ApplicationMain {
 		
 		config = {
 			
-			antialiasing: Std.int (0),
-			background: Std.int (5374034),
-			borderless: false,
-			depthBuffer: false,
-			fps: Std.int (60),
-			fullscreen: false,
-			height: Std.int (500),
+			build: "112",
+			company: "HaxeFlixel",
+			file: "newg",
+			fps: 60,
+			name: "newg",
 			orientation: "portrait",
-			resizable: true,
-			stencilBuffer: false,
-			title: "newg",
-			vsync: true,
-			width: Std.int (500),
+			packageName: "com.example.myapp",
+			version: "0.0.1",
+			windows: [
+				
+				{
+					antialiasing: 0,
+					background: 5374034,
+					borderless: false,
+					depthBuffer: false,
+					display: 0,
+					fullscreen: false,
+					hardware: true,
+					height: 500,
+					parameters: "{}",
+					resizable: true,
+					stencilBuffer: true,
+					title: "newg",
+					vsync: true,
+					width: 500,
+					x: null,
+					y: null
+				},
+			]
 			
-		}
+		};
 		
-		#if js
+		#if hxtelemetry
+		var telemetry = new hxtelemetry.HxTelemetry.Config ();
+		telemetry.allocations = true;
+		telemetry.host = "localhost";
+		telemetry.app_name = config.name;
+		Reflect.setField (config, "telemetry", telemetry);
+		#end
+		
+		#if (js && html5)
 		#if (munit || utest)
-		flash.Lib.embed (null, 500, 500, "520052");
+		openfl.Lib.embed (null, 500, 500, "520052");
 		#end
 		#else
 		create ();
@@ -118,12 +167,10 @@ class ApplicationMain {
 	
 	public static function start ():Void {
 		
-		openfl.Lib.current.stage.align = openfl.display.StageAlign.TOP_LEFT;
-		openfl.Lib.current.stage.scaleMode = openfl.display.StageScaleMode.NO_SCALE;
-		
 		var hasMain = false;
+		var entryPoint = Type.resolveClass ("Main");
 		
-		for (methodName in Type.getClassFields (Main)) {
+		for (methodName in Type.getClassFields (entryPoint)) {
 			
 			if (methodName == "main") {
 				
@@ -134,9 +181,11 @@ class ApplicationMain {
 			
 		}
 		
+		lime.Assets.initialize ();
+		
 		if (hasMain) {
 			
-			Reflect.callMethod (Main, Reflect.field (Main, "main"), []);
+			Reflect.callMethod (entryPoint, Reflect.field (entryPoint, "main"), []);
 			
 		} else {
 			
@@ -156,7 +205,7 @@ class ApplicationMain {
 	
 	
 	#if neko
-	@:noCompletion public static function __init__ () {
+	@:noCompletion @:dox(hide) public static function __init__ () {
 		
 		var loader = new neko.vm.Loader (untyped $loader);
 		loader.addPath (haxe.io.Path.directory (Sys.executablePath ()));
