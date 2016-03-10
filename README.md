@@ -1,6 +1,6 @@
 # Pong
 
-Pong is an Open-GL based 2D game that simulates table tennis. It has two paddles which move vertically. Player competes against a computer
+Pong is a 2D game that simulates table tennis. It has two paddles which move vertically. Player competes against a computer
 controlled opponent. Player uses a paddle to hit a ball back and forth. The aim of each player is to score maximum points.
 
 Programming Language: Haxe, a cross-compiled, cross-platform language.</br>
